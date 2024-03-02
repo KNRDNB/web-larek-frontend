@@ -11,7 +11,7 @@
 - src/pages/index.html — HTML-файл главной страницы
 - src/types/index.ts — файл с типами
 - src/index.ts — точка входа приложения
-- src/styles/styles.scss — корневой файл стилей
+- src/scss/styles.scss — корневой файл стилей
 - src/utils/constants.ts — файл с константами
 - src/utils/utils.ts — файл с утилитами
 
@@ -47,7 +47,7 @@ yarn build
 interface IProductItem {
   id: string; // Идентификатор
   description: string; // Описание
-  image: string; // эндпоинт картинки
+  image: string; // Эндпоинт картинки
   title: string; // Название
   category: string; // Категория
   price: number | null // Цена
@@ -91,10 +91,11 @@ interface IOrderResult {
 
 ## Компоненты модели данных
 ### 1. Класс AppData
-Управляет приложением.
+Управляет приложением. Реализует тип IAppState.
 
 Класс имеет методы:  
-```setCatalog``` - Собирает каталог.  
+```setCatalog``` - Получает каталог и сохраняет его в классе.  
+```getCatalog``` - Возвращает каталог.  
 
 ### 2. Класс Cart
 Управляет корзиной.
@@ -103,7 +104,7 @@ interface IOrderResult {
 ```addToCart``` - Добавляет товар в корзину.  
 ```deleteFromCart``` - Удаляет товар из корзины.  
 ```clearCart``` - Очищает корзину.  
-```getTotal``` - Считает сумму всех товаров в корзине.  
+```getTotal``` - Возвращает стоимость всех товаров в корзине.  
 ```getProductList``` - Получает список товаров в корзине.  
 ```updateProductList``` - Обновляет список товаров в корзине.  
 
