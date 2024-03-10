@@ -74,7 +74,6 @@ events.on('cart:updated', () => {
 			price: item.price,
 		});
 	});
-	modal.close();
 });
 events.on('cartItem:select', (item: ProductItem<IProductItem>) => {
 	appData.setActiveCardId(item, 'delete');
@@ -92,11 +91,17 @@ events.on('cart:open', () => {
 events.on('cartItem:add', () => {
 	const id = appData.getActiveCardId();
 	appData.addToCart(id);
+	cart.length = appData.getCartCount();
+	modal.close();
 });
 
-events.on('cartItem:delete', () => {
+events.on('cartItem:delete', (state) => {
 	const id = appData.getActiveCardId();
 	appData.deleteFromCart(id);
+	cart.length = appData.getCartCount();
+	if (!state){
+		modal.close();
+	}
 });
 
 events.on('details:open', () => {

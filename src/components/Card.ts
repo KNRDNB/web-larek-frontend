@@ -42,8 +42,13 @@ export class Card extends Component<IProductItem> {
 			'card__category_' + String(classList[value as keyof Object])
 		);
 	}
-	set price(value: string) {
-		this.setText(this._price, value + ' синапсов');
+	set price(value: number | null) {
+		if (value === null){
+			this.setText(this._price, 'Бесценно');
+		}
+		else{
+			this.setText(this._price, value + ' синапсов');
+		}
 	}
 }
 

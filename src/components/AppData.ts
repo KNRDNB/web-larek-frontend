@@ -79,7 +79,7 @@ export class AppData<T> implements IAppState {
 			this.events.emit('cardModal:open', item);
 		}
 		if (action === 'delete') {
-			this.events.emit('cartItem:delete');
+			this.events.emit('cartItem:delete', ['stay_opened']);
 		}
 	}
 
@@ -94,7 +94,7 @@ export class AppData<T> implements IAppState {
 		this.events.emit('cart:updated');
 	}
 
-	deleteFromCart(id: string) {
+	deleteFromCart(id: string, action?: string) {
 		this.updateCatalog(id, 'delete');
 		this.cart = this.cart.filter((item) => item !== id);
 		this.setOrderCart();
